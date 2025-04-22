@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .results-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 600px;
+        }
+        .results-container h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .results-container ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .results-container ul li {
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+        .results-container ul li:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="results-container">
+        <h2>Search Results for "{{ query }}"</h2>
+        <ul>
+            {% for result in results %}
+                <li>{{ result.name }} - {{ result.description }} - {{ result.status }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>

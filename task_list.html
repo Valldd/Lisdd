@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Tugas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .task-list-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 800px;
+        }
+        .task-list-container h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .task-list-container table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .task-list-container table th, .task-list-container table td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+        .task-list-container table th {
+            background-color: #f2f2f2;
+        }
+        .task-list-container a {
+            margin-right: 10px;
+            color: #ffc107;
+            text-decoration: none;
+        }
+        .task-list-container a:hover {
+            text-decoration: underline;
+        }
+        .task-list-container a.delete {
+            color: #ff0000;
+        }
+    </style>
+</head>
+<body>
+    <div class="task-list-container">
+        <h2>List</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nama</th>
+                    <th>Deskripsi</th>
+                    <th>Status</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for task in tasks %}
+                    <tr>
+                        <td>{{ task.name }}</td>
+                        <td>{{ task.description }}</td>
+                        <td>{{ task.status }}</td>
+                        <td>
+                            <a href="/edit_task/{{ task.id }}"><i class="fas fa-edit"></i> Edit</a>
+                            <a href="/delete_task/{{ task.id }}" class="delete"><i class="fas fa-trash"></i> Hapus</a>
+                            <a href="/mark_task/{{ task.id }}/selesai"><i class="fas fa-check"></i> Tandai Selesai</a>
+                            <a href="/mark_task/{{ task.id }}/belum selesai"><i class="fas fa-times"></i> Tandai Belum Selesai</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
